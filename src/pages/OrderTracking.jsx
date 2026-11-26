@@ -30,7 +30,7 @@ function Tracker({ order }) {
             key={done ? 'done' : stage.id}
             initial={{ opacity: 0, y: 6 }}
             animate={{ opacity: 1, y: 0 }}
-            className="mt-1 text-3xl font-bold"
+            className="mt-1 text-4xl"
             aria-live="polite"
           >
             <StatusHeadline done={done} stage={stage} secondsLeft={secondsLeft} />
@@ -48,7 +48,7 @@ function Tracker({ order }) {
         <DeliveryMap progress={done ? 1 : rideProgress} riding={riding} />
 
         <section className="flex items-center gap-4 rounded-card border border-line bg-surface p-5">
-          <div className="grid size-12 place-items-center rounded-full bg-palm font-display text-lg font-bold text-on-palm">M</div>
+          <div className="grid size-12 place-items-center rounded-full bg-sunk text-lg font-semibold text-ink">M</div>
           <div className="flex-1">
             <p className="font-semibold">Musa Abdullahi</p>
             <p className="text-sm text-muted">Your rider · Bajaj Boxer · ABJ 482 KL</p>
@@ -61,7 +61,7 @@ function Tracker({ order }) {
 
       <div className="space-y-6">
         <section className="rounded-card border border-line bg-surface p-5 sm:p-6">
-          <h2 className="mb-5 text-xl font-bold">Progress</h2>
+          <h2 className="mb-5 text-2xl">Progress</h2>
           <TrackingTimeline stages={STAGES} currentIndex={done ? STAGES.length : stageIndex} />
         </section>
         <OrderSummary restaurantName={order.restaurant.name} lines={order.lines} totals={order.totals}>

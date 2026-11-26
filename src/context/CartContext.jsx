@@ -3,7 +3,7 @@ import { cartTotals, describeSelections, lineKey, unitPrice } from '../lib/cart'
 import { load, save } from '../lib/storage'
 
 const CartContext = createContext(null)
-const KEY = 'buka-cart'
+const KEY = 'buka-cart-v2'
 
 const EMPTY = { restaurant: null, lines: [] }
 
@@ -55,7 +55,7 @@ export function CartProvider({ children }) {
         key: lineKey(item.id, selections) + (note ? `|note:${note}` : ''),
         itemId: item.id,
         name: item.name,
-        art: item.art,
+        image: item.image,
         details: describeSelections(item, selections),
         note,
         unitPrice: unitPrice(item, selections),

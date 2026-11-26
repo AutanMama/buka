@@ -1,25 +1,23 @@
 export default function ChoiceCard({ name, value, checked, onChange, icon: Icon, title, description }) {
   return (
     <label
-      className={`flex cursor-pointer items-start gap-3 rounded-2xl border p-4 transition-colors ${
-        checked ? 'border-pepper bg-pepper-soft' : 'border-line bg-surface hover:border-ink/30'
+      className={`flex cursor-pointer items-start gap-3 rounded-lg border p-4 transition-colors ${
+        checked ? 'border-ink ring-1 ring-ink' : 'border-line hover:border-muted/60'
       }`}
     >
       <input type="radio" name={name} value={value} checked={checked} onChange={() => onChange(value)} className="peer sr-only" />
+      {Icon && <Icon className="mt-0.5 size-5 shrink-0 text-ink" strokeWidth={1.75} aria-hidden />}
+      <span className="flex-1">
+        <span className="block font-medium">{title}</span>
+        {description && <span className="mt-0.5 block text-sm text-muted">{description}</span>}
+      </span>
       <span
-        className={`mt-0.5 grid size-5 shrink-0 place-items-center rounded-full border-2 peer-focus-visible:outline-2 peer-focus-visible:outline-pepper ${
-          checked ? 'border-pepper' : 'border-line'
+        className={`mt-0.5 grid size-5 shrink-0 place-items-center rounded-full border-2 peer-focus-visible:outline-2 peer-focus-visible:outline-offset-2 peer-focus-visible:outline-pepper ${
+          checked ? 'border-ink bg-ink' : 'border-line'
         }`}
         aria-hidden
       >
-        {checked && <span className="size-2.5 rounded-full bg-pepper" />}
-      </span>
-      <span className="flex-1">
-        <span className="flex items-center gap-2 font-semibold">
-          {Icon && <Icon className="size-4 text-muted" aria-hidden />}
-          {title}
-        </span>
-        {description && <span className="mt-0.5 block text-sm text-muted">{description}</span>}
+        {checked && <span className="size-2 rounded-full bg-bg" />}
       </span>
     </label>
   )

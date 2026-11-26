@@ -83,11 +83,11 @@ export default function Checkout() {
         <Link to={`/restaurants/${restaurant.id}`} className="inline-flex items-center gap-2 text-sm font-semibold text-muted hover:text-ink">
           <ArrowLeft className="size-4" aria-hidden /> Back to {restaurant.name}
         </Link>
-        <h1 className="mt-3 text-3xl font-bold sm:text-4xl">Checkout</h1>
+        <h1 className="mt-4 text-4xl sm:text-5xl">Checkout</h1>
       </div>
 
       <form ref={formRef} onSubmit={submit} noValidate className="mt-6 grid items-start gap-6 lg:grid-cols-[1fr_380px]">
-        <div className="space-y-6">
+        <div className="space-y-8 rounded-card border border-line bg-surface p-5 sm:p-8">
           <CheckoutSection step={1} title="Delivery details">
             <div className="grid gap-4 sm:grid-cols-2">
               <TextField label="Full name" autoComplete="name" value={values.name} onChange={set('name')} error={errors.name} />
@@ -128,7 +128,7 @@ export default function Checkout() {
             </div>
             {values.when === 'later' && (
               <div className="mt-4">
-                <p className="mb-2 text-sm font-semibold">Today</p>
+                <p className="mb-2 text-sm font-medium">Today</p>
                 <div className="flex flex-wrap gap-2">
                   {SLOTS.map((slot) => (
                     <button
@@ -136,8 +136,8 @@ export default function Checkout() {
                       type="button"
                       aria-pressed={values.slot === slot}
                       onClick={() => set('slot')(slot)}
-                      className={`h-10 rounded-full border px-4 text-sm font-medium ${
-                        values.slot === slot ? 'border-ink bg-ink text-bg' : 'border-line hover:border-ink/30'
+                      className={`h-10 rounded-lg border px-4 text-sm font-medium tabular-nums ${
+                        values.slot === slot ? 'border-ink bg-ink text-bg' : 'border-line hover:border-ink'
                       }`}
                     >
                       {slot}
@@ -163,8 +163,15 @@ export default function Checkout() {
         </div>
 
         <OrderSummary restaurantName={restaurant.name} lines={lines} totals={totals}>
-          <Button type="submit" size="lg" className="mt-5 w-full" loading={submitting}>
-            {submitting ? 'Placing order…' : `Place order · ${formatPrice(totals.total)}`}
+          <Button type="submit" size="lg" className="mt-5 w-full justify-between" loading={submitting}>
+            {submitting ? (
+              'Placing order…'
+            ) : (
+              <>
+                <span>Place order</span>
+                <span className="tabular-nums">{formatPrice(totals.total)}</span>
+              </>
+            )}
           </Button>
           <p className="mt-3 text-center text-xs text-muted">This is a demo. No real order or payment is made.</p>
         </OrderSummary>

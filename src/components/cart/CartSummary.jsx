@@ -2,7 +2,7 @@ import { formatPrice } from '../../lib/format'
 
 function Row({ label, value, strong, accent }) {
   return (
-    <div className={`flex justify-between ${strong ? 'pt-3 text-base font-bold' : 'text-sm text-muted'}`}>
+    <div className={`flex justify-between ${strong ? 'pt-3 text-lg font-semibold' : 'text-sm text-muted'}`}>
       <dt>{label}</dt>
       <dd className={`tabular-nums ${accent ? 'font-medium text-leaf' : ''}`}>{value}</dd>
     </div>
