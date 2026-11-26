@@ -1,14 +1,15 @@
 import { Loader2 } from 'lucide-react'
 
 const VARIANTS = {
-  primary: 'bg-pepper text-on-pepper hover:bg-pepper-hover shadow-sm',
-  secondary: 'bg-surface text-ink border border-line hover:border-ink/30',
+  primary: 'bg-pepper text-on-pepper hover:bg-pepper-hover',
+  dark: 'bg-ink text-bg hover:opacity-90',
+  secondary: 'bg-surface text-ink border border-line hover:border-ink',
   ghost: 'text-ink hover:bg-sunk',
 }
 
 const SIZES = {
-  sm: 'h-9 px-3.5 text-sm gap-1.5',
-  md: 'h-11 px-5 text-sm gap-2',
+  sm: 'h-9 px-3 text-sm gap-1.5',
+  md: 'h-11 px-4 text-[15px] gap-2',
   lg: 'h-13 px-6 text-base gap-2',
 }
 
@@ -25,7 +26,7 @@ export default function Button({
   const isButton = Component === 'button'
   return (
     <Component
-      className={`inline-flex items-center justify-center rounded-full font-semibold whitespace-nowrap transition-colors disabled:cursor-not-allowed disabled:opacity-50 ${VARIANTS[variant]} ${SIZES[size]} ${className}`}
+      className={`inline-flex items-center ${className.includes('justify-') ? '' : 'justify-center'} rounded-lg font-semibold whitespace-nowrap transition disabled:cursor-not-allowed disabled:opacity-50 ${VARIANTS[variant]} ${SIZES[size]} ${className}`}
       disabled={isButton ? disabled || loading : undefined}
       type={isButton ? props.type ?? 'button' : undefined}
       {...props}

@@ -6,7 +6,7 @@ const PANELS = {
   // Bottom sheet on phones, centred dialog from `sm` up.
   dialog: {
     wrapper: 'items-end justify-center sm:items-center sm:p-6',
-    panel: 'w-full max-h-[92dvh] rounded-t-[28px] sm:max-w-lg sm:rounded-card',
+    panel: 'w-full max-h-[92dvh] rounded-t-2xl sm:max-w-lg sm:rounded-xl',
     motion: { initial: { y: 40, opacity: 0 }, animate: { y: 0, opacity: 1 }, exit: { y: 40, opacity: 0 } },
   },
   drawer: {
