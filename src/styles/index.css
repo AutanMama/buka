@@ -4,48 +4,39 @@
 
 /* Brand tokens. Components use these names only; see BRAND.md. */
 :root {
-  --bg: #fbf6ee;
+  --bg: #ffffff;
   --surface: #ffffff;
-  --sunk: #f3eadd;
-  --line: #eadfd1;
-  --ink: #1f1a17;
-  --muted: #6b5c50;
+  --sunk: #f4f3f0;
+  --line: #e7e5e0;
+  --ink: #141414;
+  --muted: #5f5b55;
 
-  --pepper: #c2410c;
-  --pepper-hover: #a63a0b;
+  --pepper: #cc3214;
+  --pepper-hover: #b02a10;
   --on-pepper: #ffffff;
-  --pepper-soft: #fbe6da;
+  --pepper-soft: #fdece7;
 
-  --palm: #f2a541;
-  --palm-soft: #fcefd9;
-  --on-palm: #1f1a17;
+  --leaf: #1e7a4c;
+  --leaf-soft: #e6f4ec;
 
-  --leaf: #2f6b4f;
-  --leaf-soft: #e3efe7;
-
-  --shadow-card: 0 1px 2px rgb(31 26 23 / 0.04), 0 8px 24px -12px rgb(31 26 23 / 0.18);
+  --star: #f5a623;
 }
 
 .dark {
-  --bg: #15110e;
-  --surface: #211b17;
-  --sunk: #2b241f;
-  --line: #3a312a;
-  --ink: #f5ede3;
-  --muted: #b3a496;
+  --bg: #0e0e0d;
+  --surface: #1a1a18;
+  --sunk: #252523;
+  --line: #2e2d2a;
+  --ink: #f2f1ee;
+  --muted: #a8a49d;
 
-  --pepper: #ff7a45;
-  --pepper-hover: #ff9466;
-  --on-pepper: #15110e;
-  --pepper-soft: #3a2218;
+  --pepper: #ff5b3a;
+  --pepper-hover: #ff7559;
+  --on-pepper: #0e0e0d;
+  --pepper-soft: #3a1a12;
 
-  --palm: #f2a541;
-  --palm-soft: #3a2e1a;
-
-  --leaf: #6fcf9f;
-  --leaf-soft: #1e3328;
-
-  --shadow-card: 0 1px 2px rgb(0 0 0 / 0.3), 0 8px 24px -12px rgb(0 0 0 / 0.6);
+  --leaf: #4fcb8a;
+  --leaf-soft: #15301f;
 }
 
 @theme inline {
@@ -59,22 +50,16 @@
   --color-pepper-hover: var(--pepper-hover);
   --color-on-pepper: var(--on-pepper);
   --color-pepper-soft: var(--pepper-soft);
-  --color-palm: var(--palm);
-  --color-palm-soft: var(--palm-soft);
-  --color-on-palm: var(--on-palm);
   --color-leaf: var(--leaf);
   --color-leaf-soft: var(--leaf-soft);
+  --color-star: var(--star);
 
-  /* Fixed logo colours, same in both themes. */
-  --color-brand: #c2410c;
-  --color-brand-cream: #fbf6ee;
-  --color-brand-palm: #f2a541;
+  /* Logo colours never change with the theme. */
+  --color-brand: #cc3214;
 
-  --font-display: 'Bricolage Grotesque Variable', ui-sans-serif, system-ui, sans-serif;
-  --font-sans: 'Inter Variable', ui-sans-serif, system-ui, sans-serif;
+  --font-sans: 'Archivo Variable', ui-sans-serif, system-ui, sans-serif;
 
-  --radius-card: 1.25rem;
-  --shadow-card: var(--shadow-card);
+  --radius-card: 0.75rem;
 }
 
 html {
@@ -85,14 +70,17 @@ html.dark {
 }
 
 body {
-  @apply bg-bg text-ink font-sans antialiased;
-  transition: background-color 0.2s ease, color 0.2s ease;
+  @apply bg-bg font-sans text-ink antialiased;
 }
 
+/* Headings use Archivo's condensed width, like painted shop signs. */
+.display,
 h1,
-h2,
-h3 {
-  @apply font-display tracking-tight;
+h2 {
+  font-stretch: 78%;
+  font-weight: 800;
+  letter-spacing: -0.01em;
+  line-height: 1.05;
 }
 
 :focus-visible {
@@ -110,11 +98,11 @@ h3 {
   position: absolute;
   inset: 0;
   transform: translateX(-100%);
-  background: linear-gradient(90deg, transparent, rgb(255 255 255 / 0.35), transparent);
+  background: linear-gradient(90deg, transparent, rgb(255 255 255 / 0.5), transparent);
   animation: shimmer 1.4s infinite;
 }
 .dark .skeleton::after {
-  background: linear-gradient(90deg, transparent, rgb(255 255 255 / 0.06), transparent);
+  background: linear-gradient(90deg, transparent, rgb(255 255 255 / 0.05), transparent);
 }
 @keyframes shimmer {
   to {

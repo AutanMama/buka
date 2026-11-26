@@ -1,70 +1,71 @@
 # Buka brand guide
 
-Buka is named after the roadside kitchens found on every Nigerian street: warm, busy and honest. The UI should feel the same. It's warm but not loud, with food at the centre and one clear action per screen.
+Buka is named after the roadside kitchens found on every Nigerian street. The product should feel like a dependable everyday app, not a poster: the food photography does the selling and the interface stays out of the way.
+
+## Principles
+
+1. **Food first.** Photos carry the colour. The UI itself is mostly black, white and grey.
+2. **One loud colour.** Pepper red is only for the main action on a screen and for prices that matter.
+3. **Plain words.** "Add to order", "View order", "Closed · opens 8:00". No slogans inside the product.
 
 ## Colour
 
-Every colour lives as a token in `src/styles/index.css`. Components never use raw hex values.
+Every colour is a token in `src/styles/index.css`. Components never use raw hex values.
 
-| Token         | Light     | Dark      | Use                                              |
-| ------------- | --------- | --------- | ------------------------------------------------ |
-| `bg`          | `#FBF6EE` | `#15110E` | Page background ("cream")                        |
-| `surface`     | `#FFFFFF` | `#211B17` | Cards, drawers, modals                           |
-| `sunk`        | `#F3EADD` | `#2B241F` | Inputs, chips, skeletons                         |
-| `line`        | `#EADFD1` | `#3A312A` | Borders and dividers                             |
-| `ink`         | `#1F1A17` | `#F5EDE3` | Main text                                        |
-| `muted`       | `#6B5C50` | `#B3A496` | Secondary text ("clay")                          |
-| `pepper`      | `#C2410C` | `#FF7A45` | Primary action, brand ("ata rodo" pepper red)    |
-| `palm`        | `#F2A541` | `#F2A541` | Highlights, ratings, promos ("palm oil")         |
-| `leaf`        | `#2F6B4F` | `#6FCF9F` | Success, open now, free delivery ("ugu leaf")    |
-| `on-palm`     | `#1F1A17` | `#1F1A17` | Text on palm (dark in both themes)               |
-| `on-pepper`   | `#FFFFFF` | `#15110E` | Text on pepper buttons                           |
-| `*-soft`      | tints     | tints     | Background behind a badge of the same colour     |
-
-Rules:
-
-- **Pepper is for actions only.** One pepper button per view. Everything else is ink or outline.
-- **Palm never carries text by itself.** Text on palm is always `ink`.
-- **Leaf means good news.** Use it for success states only, never for decoration.
+| Token         | Light     | Dark      | Use                                     |
+| ------------- | --------- | --------- | --------------------------------------- |
+| `bg`          | `#FFFFFF` | `#0E0E0D` | Page background                         |
+| `surface`     | `#FFFFFF` | `#1A1A18` | Cards, drawers, dialogs                 |
+| `sunk`        | `#F4F3F0` | `#252523` | Search field, image placeholders        |
+| `line`        | `#E7E5E0` | `#2E2D2A` | Borders and dividers                    |
+| `ink`         | `#141414` | `#F2F1EE` | Main text, secondary buttons            |
+| `muted`       | `#5F5B55` | `#A8A49D` | Supporting text                         |
+| `pepper`      | `#CC3214` | `#FF5B3A` | Primary action, promos, errors          |
+| `leaf`        | `#1E7A4C` | `#4FCB8A` | Free delivery, completed steps          |
+| `star`        | `#F5A623` | `#F5A623` | Rating star icon only (never text)      |
+| `*-soft`      | tints     | tints     | Background behind text of that colour   |
 
 ### Contrast (WCAG 2.1)
 
-| Pair                         | Ratio  | Level |
-| ---------------------------- | ------ | ----- |
-| ink on bg                    | 16.0   | AAA   |
-| muted on bg                  | 5.97   | AA    |
-| white on pepper (button)     | 5.18   | AA    |
-| pepper on bg (link)          | 4.81   | AA    |
-| ink on palm                  | 8.40   | AAA   |
-| leaf on bg                   | 5.85   | AA    |
-| dark: ink on bg              | 16.2   | AAA   |
-| dark: muted on surface       | 7.02   | AAA   |
-| dark: bg-ink on pepper       | 7.26   | AAA   |
-| dark: leaf on surface        | 9.00   | AAA   |
-
-### Logo
-
-The logo is a steaming bowl in a pepper square. It always uses the fixed colours `brand` (#C2410C), `brand-cream` (#FBF6EE) and `brand-palm` (#F2A541), so it looks the same in light and dark themes.
+| Pair                          | Ratio | Level |
+| ----------------------------- | ----- | ----- |
+| ink on bg                     | 18.4  | AAA   |
+| muted on bg                   | 6.74  | AA    |
+| muted on sunk                 | 6.08  | AA    |
+| white on pepper (button)      | 5.21  | AA    |
+| pepper on pepper-soft         | 4.54  | AA    |
+| leaf on bg                    | 5.33  | AA    |
+| dark: ink on bg               | 17.1  | AAA   |
+| dark: muted on surface        | 7.02  | AAA   |
+| dark: bg on pepper (button)   | 6.26  | AA    |
+| dark: leaf on surface         | 8.50  | AAA   |
 
 ## Type
 
-- **Display:** Bricolage Grotesque for headings, prices and the logo. It's a bit quirky, like hand-painted shop signs.
-- **Body:** Inter for everything else, chosen because it stays readable at small sizes.
-- Scale: 12 / 14 / 16 / 20 / 24 / 32 / 48 px. Headings use tight tracking.
+One family: **Archivo**, using its width axis.
 
-## Shape and depth
+- **Headings** use the condensed width (78%) at weight 800, which nods to the hand-painted signs over real bukas.
+- **Body and UI** use the normal width at 400–600.
+- Sizes: 12 / 14 / 15 / 17 / 24 / 30 / 36 / 48 / 60 px.
+- Prices and counts use tabular numbers so they don't jump when they change.
 
-- Cards: `rounded-card` (20px). Buttons and chips: fully rounded.
-- One shadow token (`shadow-card`). Hover lifts a card by 2px. Nothing else floats.
+## Logo
+
+A lowercase wordmark, `buka.`, set in condensed Archivo with a pepper full stop. The stop is always `brand` (#CC3214) in both themes.
+
+## Shape
+
+- Cards and photos: 12px radius. Buttons, inputs and chips: 8px. Only avatars and category photos are round.
+- Borders separate things. Shadows are only for things that float (add button on a photo, dialogs).
+
+## Photography
+
+- Real dishes, shot close, with natural light. Square crops for dishes, 16:10 for restaurant covers.
+- Closed restaurants show their cover in greyscale.
+- All photos are from Unsplash (see README for credits) and are served as WebP.
 
 ## Motion
 
-- Short and physical: 150–250ms, spring for "add to cart", ease-out for page changes.
-- Motion always explains something (an item went into the cart, a page changed). It's never decoration.
+- 150–250ms. Springs for things that react to a tap (add button, cart count), ease-out for page changes.
+- Motion always explains something. It is never decoration.
 - Respects `prefers-reduced-motion`.
-
-## Illustration
-
-Dishes are drawn as flat, top-down plates (`DishArt`). The food colours below are illustration-only and never used for UI:
-
-`rice #E0782F · stew #B23A1A · plantain #E9B949 · greens #4F8A3C · meat #7A3B22 · swallow #F1E6CF · bowl #FFFFFF`
