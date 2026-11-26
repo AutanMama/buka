@@ -1,0 +1,136 @@
+@import 'tailwindcss';
+
+@custom-variant dark (&:where(.dark, .dark *));
+
+/* Brand tokens. Components use these names only; see BRAND.md. */
+:root {
+  --bg: #fbf6ee;
+  --surface: #ffffff;
+  --sunk: #f3eadd;
+  --line: #eadfd1;
+  --ink: #1f1a17;
+  --muted: #6b5c50;
+
+  --pepper: #c2410c;
+  --pepper-hover: #a63a0b;
+  --on-pepper: #ffffff;
+  --pepper-soft: #fbe6da;
+
+  --palm: #f2a541;
+  --palm-soft: #fcefd9;
+  --on-palm: #1f1a17;
+
+  --leaf: #2f6b4f;
+  --leaf-soft: #e3efe7;
+
+  --shadow-card: 0 1px 2px rgb(31 26 23 / 0.04), 0 8px 24px -12px rgb(31 26 23 / 0.18);
+}
+
+.dark {
+  --bg: #15110e;
+  --surface: #211b17;
+  --sunk: #2b241f;
+  --line: #3a312a;
+  --ink: #f5ede3;
+  --muted: #b3a496;
+
+  --pepper: #ff7a45;
+  --pepper-hover: #ff9466;
+  --on-pepper: #15110e;
+  --pepper-soft: #3a2218;
+
+  --palm: #f2a541;
+  --palm-soft: #3a2e1a;
+
+  --leaf: #6fcf9f;
+  --leaf-soft: #1e3328;
+
+  --shadow-card: 0 1px 2px rgb(0 0 0 / 0.3), 0 8px 24px -12px rgb(0 0 0 / 0.6);
+}
+
+@theme inline {
+  --color-bg: var(--bg);
+  --color-surface: var(--surface);
+  --color-sunk: var(--sunk);
+  --color-line: var(--line);
+  --color-ink: var(--ink);
+  --color-muted: var(--muted);
+  --color-pepper: var(--pepper);
+  --color-pepper-hover: var(--pepper-hover);
+  --color-on-pepper: var(--on-pepper);
+  --color-pepper-soft: var(--pepper-soft);
+  --color-palm: var(--palm);
+  --color-palm-soft: var(--palm-soft);
+  --color-on-palm: var(--on-palm);
+  --color-leaf: var(--leaf);
+  --color-leaf-soft: var(--leaf-soft);
+
+  /* Fixed logo colours, same in both themes. */
+  --color-brand: #c2410c;
+  --color-brand-cream: #fbf6ee;
+  --color-brand-palm: #f2a541;
+
+  --font-display: 'Bricolage Grotesque Variable', ui-sans-serif, system-ui, sans-serif;
+  --font-sans: 'Inter Variable', ui-sans-serif, system-ui, sans-serif;
+
+  --radius-card: 1.25rem;
+  --shadow-card: var(--shadow-card);
+}
+
+html {
+  color-scheme: light;
+}
+html.dark {
+  color-scheme: dark;
+}
+
+body {
+  @apply bg-bg text-ink font-sans antialiased;
+  transition: background-color 0.2s ease, color 0.2s ease;
+}
+
+h1,
+h2,
+h3 {
+  @apply font-display tracking-tight;
+}
+
+:focus-visible {
+  outline: 2px solid var(--pepper);
+  outline-offset: 2px;
+}
+
+.skeleton {
+  position: relative;
+  overflow: hidden;
+  background: var(--sunk);
+}
+.skeleton::after {
+  content: '';
+  position: absolute;
+  inset: 0;
+  transform: translateX(-100%);
+  background: linear-gradient(90deg, transparent, rgb(255 255 255 / 0.35), transparent);
+  animation: shimmer 1.4s infinite;
+}
+.dark .skeleton::after {
+  background: linear-gradient(90deg, transparent, rgb(255 255 255 / 0.06), transparent);
+}
+@keyframes shimmer {
+  to {
+    transform: translateX(100%);
+  }
+}
+
+.no-scrollbar {
+  scrollbar-width: none;
+}
+.no-scrollbar::-webkit-scrollbar {
+  display: none;
+}
+
+@media (prefers-reduced-motion: reduce) {
+  .skeleton::after {
+    animation: none;
+  }
+}
