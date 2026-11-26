@@ -1,7 +1,6 @@
 import { AnimatePresence, motion } from 'framer-motion'
-import { Flame, Plus } from 'lucide-react'
-import DishArt from './DishArt'
-import Badge from '../ui/Badge'
+import { Plus } from 'lucide-react'
+import Photo from '../ui/Photo'
 import QuantityStepper from '../ui/QuantityStepper'
 import { formatPrice } from '../../lib/format'
 
@@ -10,35 +9,30 @@ export default function MenuItemCard({ item, quantity, disabled, onOpen, onQuick
   const showStepper = !hasOptions && quantity > 0
 
   return (
-    <article className="flex gap-4 rounded-card border border-line bg-surface p-3 sm:p-4">
-      <button
-        type="button"
-        onClick={onOpen}
-        className="flex min-w-0 flex-1 flex-col items-start text-left"
-        aria-label={`View ${item.name}`}
-      >
-        {item.popular && (
-          <Badge tone="pepper" icon={Flame} className="mb-2">
-            Popular
-          </Badge>
-        )}
-        <h4 className="font-semibold">{item.name}</h4>
+    <article
+      className={`relative flex gap-4 rounded-card border bg-surface p-3 transition-colors ${
+        quantity > 0 ? 'border-ink' : 'border-line hover:border-muted/50'
+      }`}
+    >
+      <button type="button" onClick={onOpen} className="flex min-w-0 flex-1 flex-col items-start py-1 pl-1 text-left" aria-label={`View ${item.name}`}>
+        <h4 className="font-semibold">
+          {quantity > 0 && <span className="mr-1.5 text-pepper tabular-nums">{quantity}×</span>}
+          {item.name}
+        </h4>
         <p className="mt-1 line-clamp-2 text-sm text-muted">{item.description}</p>
-        <p className="mt-auto pt-3 font-display text-lg font-semibold">
+        <p className="mt-auto flex items-center gap-2 pt-3 text-[15px] font-semibold">
           {formatPrice(item.price)}
-          {hasOptions && <span className="ml-1 font-sans text-xs font-normal text-muted">+ options</span>}
+          {item.popular && <span className="text-xs font-semibold text-pepper">Popular</span>}
         </p>
       </button>
 
       <div className="relative shrink-0">
-        <div className="grid size-28 place-items-center rounded-2xl bg-sunk sm:size-32">
-          <DishArt kind={item.art} image={item.image} alt={item.name} className="size-24 sm:size-28" />
-        </div>
-        <div className="absolute -bottom-2 left-1/2 -translate-x-1/2">
+        <Photo src={item.image} alt={item.name} className="size-28 rounded-lg sm:size-32" />
+        <div className="absolute right-1.5 bottom-1.5">
           <AnimatePresence mode="wait" initial={false}>
             {showStepper ? (
-              <motion.div key="stepper" initial={{ scale: 0.7, opacity: 0 }} animate={{ scale: 1, opacity: 1 }} exit={{ scale: 0.7, opacity: 0 }}>
-                <div className="rounded-full bg-surface shadow-card">
+              <motion.div key="stepper" initial={{ scale: 0.8, opacity: 0 }} animate={{ scale: 1, opacity: 1 }} exit={{ scale: 0.8, opacity: 0 }}>
+                <div className="rounded-lg shadow-md">
                   <QuantityStepper
                     size="sm"
                     value={quantity}
@@ -54,15 +48,14 @@ export default function MenuItemCard({ item, quantity, disabled, onOpen, onQuick
                 type="button"
                 disabled={disabled}
                 onClick={hasOptions ? onOpen : onQuickAdd}
-                whileTap={{ scale: 0.9 }}
-                initial={{ scale: 0.7, opacity: 0 }}
+                whileTap={{ scale: 0.88 }}
+                initial={{ scale: 0.8, opacity: 0 }}
                 animate={{ scale: 1, opacity: 1 }}
-                exit={{ scale: 0.7, opacity: 0 }}
+                exit={{ scale: 0.8, opacity: 0 }}
                 aria-label={`Add ${item.name}`}
-                className="flex h-9 items-center gap-1 rounded-full bg-pepper px-4 text-sm font-semibold text-on-pepper shadow-card hover:bg-pepper-hover disabled:opacity-50"
+                className="grid size-9 place-items-center rounded-lg bg-surface text-ink shadow-md hover:bg-sunk disabled:opacity-50"
               >
-                <Plus className="size-4" aria-hidden />
-                {quantity > 0 ? quantity : 'Add'}
+                <Plus className="size-5" strokeWidth={2.25} aria-hidden />
               </motion.button>
             )}
           </AnimatePresence>

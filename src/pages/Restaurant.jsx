@@ -2,7 +2,7 @@ import { useCallback, useMemo, useState } from 'react'
 import { useParams } from 'react-router-dom'
 import { UtensilsCrossed } from 'lucide-react'
 import PageTransition from '../components/layout/PageTransition'
-import RestaurantBanner, { RestaurantBannerSkeleton } from '../components/restaurant/RestaurantBanner'
+import RestaurantHeader, { RestaurantHeaderSkeleton } from '../components/restaurant/RestaurantHeader'
 import MenuTabs from '../components/menu/MenuTabs'
 import MenuItemCard from '../components/menu/MenuItemCard'
 import MenuSkeleton from '../components/menu/MenuSkeleton'
@@ -76,7 +76,7 @@ export default function Restaurant() {
   if (status === 'loading') {
     return (
       <PageTransition>
-        <RestaurantBannerSkeleton />
+        <RestaurantHeaderSkeleton />
         <MenuSkeleton />
       </PageTransition>
     )
@@ -86,31 +86,35 @@ export default function Restaurant() {
 
   return (
     <PageTransition>
-      <RestaurantBanner restaurant={restaurant} />
+      <RestaurantHeader restaurant={restaurant} />
 
-      <div className="mt-8">
-        <MenuTabs categories={categories} active={activeTab} onSelect={selectTab} />
-        {restaurant.menu.map((section) => (
-          <section key={section.category} data-section={section.category} className="scroll-mt-32 pt-8">
-            <h2 className="mb-4 text-2xl font-bold">{section.category}</h2>
-            <div className="grid gap-4 md:grid-cols-2">
-              {section.items.map((item) => {
-                const quantity = cart.restaurant?.id === restaurant.id ? cart.quantityOf(item.id) : 0
-                return (
-                  <MenuItemCard
-                    key={item.id}
-                    item={item}
-                    disabled={closed}
-                    quantity={quantity}
-                    onOpen={() => setOpenItem(item)}
-                    onQuickAdd={() => add(item)}
-                    onChangeQuantity={(q) => (q > quantity ? add(item) : cart.removeOne(item.id))}
-                  />
-                )
-              })}
-            </div>
-          </section>
-        ))}
+      <div className="mt-10 lg:grid lg:grid-cols-[180px_1fr] lg:gap-10">
+        <aside>
+          <MenuTabs categories={categories} active={activeTab} onSelect={selectTab} />
+        </aside>
+        <div>
+          {restaurant.menu.map((section) => (
+            <section key={section.category} data-section={section.category} className="scroll-mt-32 pt-8 first:pt-6 lg:scroll-mt-24 lg:first:pt-0">
+              <h2 className="mb-4 text-3xl">{section.category}</h2>
+              <div className="grid gap-3 md:grid-cols-2">
+                {section.items.map((item) => {
+                  const quantity = cart.restaurant?.id === restaurant.id ? cart.quantityOf(item.id) : 0
+                  return (
+                    <MenuItemCard
+                      key={item.id}
+                      item={item}
+                      disabled={closed}
+                      quantity={quantity}
+                      onOpen={() => setOpenItem(item)}
+                      onQuickAdd={() => add(item)}
+                      onChangeQuantity={(q) => (q > quantity ? add(item) : cart.removeOne(item.id))}
+                    />
+                  )
+                })}
+              </div>
+            </section>
+          ))}
+        </div>
       </div>
 
       <ItemSheet item={openItem} disabled={closed} onAdd={(options) => add(openItem, options)} onClose={() => setOpenItem(null)} />

@@ -1,9 +1,9 @@
 import { useState } from 'react'
 import { X } from 'lucide-react'
-import DishArt from './DishArt'
 import OptionGroup from './OptionGroup'
 import Overlay from '../ui/Overlay'
 import Button from '../ui/Button'
+import Photo from '../ui/Photo'
 import QuantityStepper from '../ui/QuantityStepper'
 import { unitPrice } from '../../lib/cart'
 import { formatPrice } from '../../lib/format'
@@ -29,13 +29,13 @@ function ItemSheetBody({ item, disabled, onAdd, onClose }) {
   return (
     <form onSubmit={submit} className="flex min-h-0 flex-1 flex-col">
       <div className="min-h-0 flex-1 overflow-y-auto">
-        <div className="relative grid h-56 place-items-center bg-sunk">
-          <DishArt kind={item.art} image={item.image} alt={item.name} className="size-44 drop-shadow-xl" />
+        <div className="relative">
+          <Photo src={item.image} alt={item.name} priority className="aspect-[16/10]" />
           <button
             type="button"
             onClick={onClose}
             aria-label="Close"
-            className="absolute top-4 right-4 grid size-10 place-items-center rounded-full bg-surface shadow-card"
+            className="absolute top-3 right-3 grid size-10 place-items-center rounded-lg bg-surface text-ink shadow-sm"
           >
             <X className="size-5" />
           </button>
@@ -43,9 +43,9 @@ function ItemSheetBody({ item, disabled, onAdd, onClose }) {
 
         <div className="space-y-5 p-5 sm:p-6">
           <div>
-            <h2 className="text-2xl font-bold">{item.name}</h2>
-            <p className="mt-1 text-muted">{item.description}</p>
-            <p className="mt-3 font-display text-xl font-semibold">{formatPrice(item.price)}</p>
+            <h2 className="text-3xl">{item.name}</h2>
+            <p className="mt-2 text-muted">{item.description}</p>
+            <p className="mt-3 text-lg font-semibold">{formatPrice(item.price)}</p>
           </div>
 
           {item.options?.map((group) => (
@@ -65,7 +65,7 @@ function ItemSheetBody({ item, disabled, onAdd, onClose }) {
               rows={2}
               maxLength={120}
               placeholder="e.g. no onions, extra pepper"
-              className="mt-3 w-full resize-none rounded-2xl border border-line bg-sunk px-4 py-3 text-sm placeholder:text-muted focus:border-pepper focus:outline-none"
+              className="mt-3 w-full resize-none rounded-lg border border-line bg-surface px-3.5 py-3 text-sm placeholder:text-muted/70 focus:border-ink focus:outline-none"
             />
           </label>
         </div>
@@ -79,8 +79,15 @@ function ItemSheetBody({ item, disabled, onAdd, onClose }) {
           onIncrement={() => setQuantity((q) => q + 1)}
           onDecrement={() => setQuantity((q) => Math.max(1, q - 1))}
         />
-        <Button type="submit" size="lg" className="flex-1" disabled={disabled}>
-          {disabled ? 'Restaurant closed' : `Add · ${formatPrice(total)}`}
+        <Button type="submit" size="lg" className="flex-1 justify-between" disabled={disabled}>
+          {disabled ? (
+            'Restaurant closed'
+          ) : (
+            <>
+              <span>Add to order</span>
+              <span className="tabular-nums">{formatPrice(total)}</span>
+            </>
+          )}
         </Button>
       </div>
     </form>
