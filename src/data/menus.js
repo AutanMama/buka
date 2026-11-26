@@ -1,4 +1,4 @@
-// `art` picks the plate drawing in DishArt. `image` can replace it with a photo.
+const photo = (name) => `/images/dishes/${name}.webp`
 
 const SPICE = {
   id: 'spice',
@@ -64,22 +64,22 @@ export const menus = {
     {
       category: 'Popular',
       items: [
-        { id: 'mn-jollof', name: 'Firewood Jollof', description: 'Smoky party jollof rice with fried plantain.', price: 3500, art: 'rice', popular: true, options: [SPICE, PROTEIN] },
-        { id: 'mn-fried-rice', name: 'Nigerian Fried Rice', description: 'Mixed veg, liver and prawns.', price: 3800, art: 'friedRice', options: [PROTEIN, SIDES] },
+        { id: 'mn-jollof', name: 'Firewood Jollof & Fish', description: 'Smoky party jollof with grilled fish and fried plantain.', price: 4500, image: photo('firewood-jollof'), popular: true, options: [SPICE, PROTEIN] },
+        { id: 'mn-fried-rice', name: 'Nigerian Fried Rice', description: 'Mixed veg, sweetcorn, peas and carrots.', price: 3800, image: photo('fried-rice'), options: [PROTEIN, SIDES] },
       ],
     },
     {
       category: 'Rice',
       items: [
-        { id: 'mn-white-stew', name: 'White Rice & Ofada Stew', description: 'Locust beans, assorted meat, green pepper.', price: 4200, art: 'stew', options: [PROTEIN, SIDES] },
-        { id: 'mn-coconut', name: 'Coconut Rice', description: 'Slow-cooked in fresh coconut milk.', price: 3700, art: 'rice', options: [SPICE, PROTEIN] },
+        { id: 'mn-white-stew', name: 'White Rice & Chicken Stew', description: 'Fluffy white rice, tomato stew, boiled egg.', price: 4200, image: photo('rice-and-stew'), options: [PROTEIN, SIDES] },
+        { id: 'mn-party', name: 'Party Jollof (Large)', description: 'The real party pot. Feeds two.', price: 6500, image: photo('jollof-tray'), options: [SPICE, PROTEIN] },
       ],
     },
     {
       category: 'Extras',
       items: [
-        { id: 'mn-dodo', name: 'Dodo', description: 'Sweet fried ripe plantain.', price: 1000, art: 'plantain' },
-        { id: 'mn-moimoi', name: 'Moi Moi', description: 'Steamed bean pudding with egg and fish.', price: 900, art: 'moimoi' },
+        { id: 'mn-dodo', name: 'Dodo', description: 'Sweet fried ripe plantain.', price: 1000, image: photo('dodo') },
+        { id: 'mn-platter', name: 'Moi Moi & Plantain Platter', description: 'Moi moi, boiled egg, dodo and pepper sauce.', price: 3500, image: photo('swallow-platter') },
       ],
     },
   ],
@@ -87,16 +87,15 @@ export const menus = {
     {
       category: 'Popular',
       items: [
-        { id: 'as-beef', name: 'Beef Suya', description: 'Thin-sliced beef, yaji spice, onions and tomato.', price: 3000, art: 'suya', popular: true, options: [SPICE] },
-        { id: 'as-chicken', name: 'Chicken Suya', description: 'Grilled chicken thighs on skewers.', price: 3500, art: 'suya', options: [SPICE] },
+        { id: 'as-suya-jollof', name: 'Suya Skewers & Jollof', description: 'Yaji-spiced beef skewers on a bed of jollof.', price: 4800, image: photo('suya-jollof'), popular: true, options: [SPICE] },
+        { id: 'as-chicken', name: 'Grilled Chicken & Rice', description: 'Half chicken, charcoal grilled, with jollof.', price: 5500, image: photo('grilled-chicken'), options: [SPICE] },
       ],
     },
     {
       category: 'Grill',
       items: [
-        { id: 'as-kilishi', name: 'Kilishi (100g)', description: 'Sun-dried spiced beef jerky.', price: 2500, art: 'suya' },
-        { id: 'as-ram', name: 'Ram Suya', description: 'Tender ram meat, slow grilled.', price: 4500, art: 'suya', options: [SPICE] },
-        { id: 'as-gizzard', name: 'Peppered Gizzard', description: 'Gizzard in rich pepper sauce.', price: 2800, art: 'stew', options: [SPICE] },
+        { id: 'as-fish', name: 'Grilled Fish Platter', description: 'Whole fish, skewers, jollof and fresh salad.', price: 7500, image: photo('jollof-fish'), options: [SPICE] },
+        { id: 'as-goat', name: 'Peppered Goat Meat', description: 'Goat meat in rich pepper sauce with potatoes.', price: 4000, image: photo('goat-stew'), options: [SPICE] },
       ],
     },
   ],
@@ -104,16 +103,16 @@ export const menus = {
     {
       category: 'Popular',
       items: [
-        { id: 'cp-afang', name: 'Afang Soup', description: 'Afang and waterleaf with periwinkle and assorted meat.', price: 5500, art: 'soup', popular: true, options: [SWALLOW] },
-        { id: 'cp-edikang', name: 'Edikang Ikong', description: 'Ugu and waterleaf, stockfish and dry fish.', price: 6000, art: 'soup', options: [SWALLOW] },
+        { id: 'cp-afang', name: 'Afang Soup & Fufu', description: 'Afang and waterleaf, periwinkle and assorted meat.', price: 5500, image: photo('afang'), popular: true, options: [SWALLOW] },
+        { id: 'cp-egusi', name: 'Egusi Soup', description: 'Melon seed soup with assorted meat and stockfish.', price: 4800, image: photo('egusi'), options: [SWALLOW] },
       ],
     },
     {
       category: 'Soups',
       items: [
-        { id: 'cp-pepper', name: 'Catfish Pepper Soup', description: 'Fresh catfish, uziza and scent leaf.', price: 6500, art: 'pepperSoup', options: [SPICE] },
-        { id: 'cp-egusi', name: 'Egusi Soup', description: 'Melon seed soup with bitter leaf.', price: 4800, art: 'egusi', options: [SWALLOW] },
-        { id: 'cp-okra', name: 'Seafood Okra', description: 'Prawns, crab and fish in fresh okra.', price: 7000, art: 'soup', options: [SWALLOW] },
+        { id: 'cp-pepper', name: 'Fish Pepper Soup', description: 'Fresh fish, uziza and scent leaf.', price: 6500, image: photo('fish-pepper-soup'), options: [SPICE] },
+        { id: 'cp-egg', name: 'Ofe Akwu with Egg', description: 'Palm nut soup with boiled egg.', price: 4500, image: photo('egg-stew'), options: [SWALLOW] },
+        { id: 'cp-goat', name: 'Goat Meat Stew', description: 'Slow-cooked goat meat and yam chunks.', price: 5000, image: photo('goat-stew'), options: [SWALLOW] },
       ],
     },
   ],
@@ -121,15 +120,15 @@ export const menus = {
     {
       category: 'Popular',
       items: [
-        { id: 'tc-tuwo', name: 'Tuwo Shinkafa & Miyan Kuka', description: 'Soft rice swallow with baobab leaf soup.', price: 3000, art: 'swallow', popular: true },
-        { id: 'tc-masa', name: 'Masa (6 pcs)', description: 'Fermented rice cakes with yaji.', price: 1500, art: 'snack' },
+        { id: 'tc-tuwo', name: 'Tuwo & Soup Combo', description: 'Tuwo shinkafa with miyan kuka and miyan taushe.', price: 3000, image: photo('soup-bowls'), popular: true },
+        { id: 'tc-masa', name: 'Masa (6 pcs)', description: 'Fermented rice cakes with yaji.', price: 1500, image: photo('small-chops') },
       ],
     },
     {
       category: 'Northern classics',
       items: [
-        { id: 'tc-taliya', name: 'Taliya', description: 'Local spaghetti in pepper sauce.', price: 2500, art: 'friedRice', options: [PROTEIN] },
-        { id: 'tc-fura', name: 'Fura da Nono', description: 'Millet balls in fresh cow milk.', price: 1200, art: 'drink' },
+        { id: 'tc-jollof', name: 'Garau Garau', description: 'Rice and beans with spiced oil and onions.', price: 2500, image: photo('spiced-rice'), options: [PROTEIN] },
+        { id: 'tc-platter', name: 'Tuwo Platter', description: 'Tuwo, plantain, egg and two soups.', price: 4500, image: photo('swallow-platter') },
       ],
     },
   ],
@@ -137,16 +136,16 @@ export const menus = {
     {
       category: 'Popular',
       items: [
-        { id: 'pc-puff', name: 'Puff-Puff (10 pcs)', description: 'Soft, sweet and freshly fried.', price: 1200, art: 'snack', popular: true },
-        { id: 'pc-pack', name: 'Small Chops Pack', description: 'Puff-puff, samosa, spring roll and peppered gizzard.', price: 5000, art: 'snack' },
+        { id: 'pc-puff', name: 'Puff-Puff (10 pcs)', description: 'Soft, sweet and freshly fried.', price: 1200, image: photo('puff-puff'), popular: true },
+        { id: 'pc-pack', name: 'Small Chops Pack', description: 'Puff-puff, samosa, spring roll and gizzard.', price: 5000, image: photo('small-chops') },
       ],
     },
     {
       category: 'Pastries',
       items: [
-        { id: 'pc-meatpie', name: 'Meat Pie', description: 'Buttery crust, minced beef and potato.', price: 900, art: 'pie' },
-        { id: 'pc-sausage', name: 'Sausage Roll', description: 'Flaky pastry, beef sausage.', price: 800, art: 'pie' },
-        { id: 'pc-chin', name: 'Chin Chin (250g)', description: 'Crunchy and lightly sweet.', price: 1500, art: 'snack' },
+        { id: 'pc-meatpie', name: 'Meat Pie', description: 'Buttery crust, minced beef and potato.', price: 900, image: photo('meat-pie') },
+        { id: 'pc-roll', name: 'Fish Roll Basket', description: 'Four fish rolls with chips and coleslaw.', price: 3500, image: photo('pastry-basket') },
+        { id: 'pc-chin', name: 'Buns (6 pcs)', description: 'Crunchy outside, soft inside.', price: 1500, image: photo('chin-chin') },
       ],
     },
   ],
@@ -154,8 +153,8 @@ export const menus = {
     {
       category: 'Popular',
       items: [
-        { id: 'jr-party', name: 'Party Jollof', description: 'The one from every wedding you remember.', price: 3200, art: 'rice', popular: true, options: [SPICE, PROTEIN] },
-        { id: 'jr-ofada', name: 'Ofada & Ayamase', description: 'Local rice with green pepper stew.', price: 4500, art: 'stew', options: [PROTEIN] },
+        { id: 'jr-party', name: 'Party Jollof', description: 'The one from every wedding you remember.', price: 3200, image: photo('jollof-tray'), popular: true, options: [SPICE, PROTEIN] },
+        { id: 'jr-chicken', name: 'Jollof & Roast Chicken', description: 'Quarter chicken, roasted till crispy.', price: 4800, image: photo('grilled-chicken'), options: [SPICE] },
       ],
     },
   ],
@@ -163,14 +162,14 @@ export const menus = {
     {
       category: 'Popular',
       items: [
-        { id: 'bj-bole', name: 'Bole & Fish', description: 'Roasted plantain, grilled fish and pepper sauce.', price: 4000, art: 'plantain', popular: true, options: [SPICE] },
-        { id: 'bj-yam', name: 'Roasted Yam & Palm Oil Sauce', description: 'Fire-roasted yam with ugba.', price: 2500, art: 'plantain' },
+        { id: 'bj-bole', name: 'Bole & Fish', description: 'Roasted plantain, grilled fish, pepper sauce and onions.', price: 4000, image: photo('bole-fish'), popular: true, options: [SPICE] },
+        { id: 'bj-tilapia', name: 'Grilled Tilapia', description: 'Whole tilapia, lemon and fresh tomato.', price: 6000, image: photo('grilled-tilapia'), options: [SPICE] },
       ],
     },
     {
-      category: 'Add-ons',
+      category: 'Sides',
       items: [
-        { id: 'bj-corn', name: 'Roasted Corn & Pear', description: 'Seasonal, two cobs.', price: 1200, art: 'corn' },
+        { id: 'bj-plantain', name: 'Fried Plantain (Tray)', description: 'Party tray of golden dodo.', price: 3000, image: photo('fried-plantain') },
       ],
     },
   ],
@@ -178,15 +177,14 @@ export const menus = {
     {
       category: 'Popular',
       items: [
-        { id: 'zc-zobo', name: 'Zobo', description: 'Hibiscus, ginger, pineapple and cloves.', price: 1000, art: 'zobo', popular: true, options: [SIZE] },
-        { id: 'zc-kunu', name: 'Kunu Aya', description: 'Tiger nut and date milk.', price: 1200, art: 'drink', options: [SIZE] },
+        { id: 'zc-zobo', name: 'Zobo', description: 'Hibiscus, ginger, pineapple and cloves.', price: 1000, image: photo('zobo'), popular: true, options: [SIZE] },
+        { id: 'zc-chapman', name: 'Chapman', description: 'Classic Nigerian mocktail with cucumber and citrus.', price: 1800, image: photo('chapman'), options: [SIZE] },
       ],
     },
     {
-      category: 'Fresh juice',
+      category: 'Hot drinks',
       items: [
-        { id: 'zc-pineapple', name: 'Pineapple Ginger', description: 'Pressed daily, no added sugar.', price: 1500, art: 'juice', options: [SIZE] },
-        { id: 'zc-chapman', name: 'Chapman', description: 'Classic Nigerian mocktail.', price: 1800, art: 'zobo' },
+        { id: 'zc-tea', name: 'Hot Zobo Tea', description: 'Warm hibiscus with ginger and honey.', price: 900, image: photo('zobo-tea') },
       ],
     },
   ],

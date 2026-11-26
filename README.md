@@ -32,8 +32,8 @@ src/
   components/
     ui/          Shared building blocks (Button, Badge, Overlay, ...)
     layout/      Header, footer, page transition
-    restaurant/  Restaurant cards, filters, banner
-    menu/        Menu items, item sheet, dish illustrations
+    restaurant/  Restaurant cards, filters, category rail, header
+    menu/        Menu items, category tabs, item sheet
     cart/        Cart drawer and summary
     checkout/    Checkout sections and order summary
     tracking/    Order timeline and map
@@ -46,3 +46,7 @@ src/
 ```
 
 Design decisions (colour, type, motion) are documented in [BRAND.md](BRAND.md).
+
+## Photo credits
+
+Food photography from [Unsplash](https://unsplash.com), used under the Unsplash License. Thanks to Keesha's Kitchen, Tosan Dudun, Femoree, Jon Handley, Rimsha Noor, Gourmet Lenz, Emmanuel M, Valdhy Mbemba, Griffin Wooldridge, Kevin kevin, Umair Ali Asad, Eugene Krasnaok, Dr Muhammad Amer, Zoshua Colah, Femi Oyekoya, FitNish Media, Diego Arenas de Rodrigo, Eiliv Aceron, Gabi Miranda and Victoria Shes.

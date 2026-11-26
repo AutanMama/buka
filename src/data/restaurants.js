@@ -1,11 +1,14 @@
+const cover = (id) => `/images/restaurants/${id}.webp`
+const dish = (name) => `/images/dishes/${name}.webp`
+
 export const CUISINES = [
   { id: 'all', label: 'All' },
-  { id: 'rice', label: 'Rice' },
-  { id: 'grill', label: 'Grill' },
-  { id: 'soups', label: 'Soups & Swallow' },
-  { id: 'northern', label: 'Northern' },
-  { id: 'snacks', label: 'Snacks' },
-  { id: 'drinks', label: 'Drinks' },
+  { id: 'rice', label: 'Rice', image: dish('firewood-jollof') },
+  { id: 'grill', label: 'Grill', image: dish('suya-jollof') },
+  { id: 'soups', label: 'Soups', image: dish('egusi') },
+  { id: 'northern', label: 'Northern', image: dish('soup-bowls') },
+  { id: 'snacks', label: 'Snacks', image: dish('puff-puff') },
+  { id: 'drinks', label: 'Drinks', image: dish('zobo') },
 ]
 
 export const SORT_OPTIONS = [
@@ -30,7 +33,7 @@ export const restaurants = [
     priceLevel: 2,
     isOpen: true,
     promo: '10% off your first order',
-    banner: 'rice',
+    cover: cover('mama-nkechi'),
   },
   {
     id: 'arewa-suya',
@@ -45,7 +48,7 @@ export const restaurants = [
     deliveryFee: 0,
     priceLevel: 1,
     isOpen: true,
-    banner: 'grill',
+    cover: cover('arewa-suya'),
   },
   {
     id: 'calabar-pot',
@@ -60,12 +63,12 @@ export const restaurants = [
     deliveryFee: 900,
     priceLevel: 3,
     isOpen: true,
-    banner: 'soup',
+    cover: cover('calabar-pot'),
   },
   {
     id: 'tuwo-corner',
     name: 'Tuwo Corner',
-    tagline: 'Tuwo shinkafa, miyan kuka and fura da nono.',
+    tagline: 'Tuwo shinkafa, miyan kuka and masa.',
     cuisine: 'northern',
     area: 'Kubwa',
     rating: 4.5,
@@ -75,12 +78,12 @@ export const restaurants = [
     deliveryFee: 500,
     priceLevel: 1,
     isOpen: true,
-    banner: 'swallow',
+    cover: cover('tuwo-corner'),
   },
   {
     id: 'puff-and-chops',
     name: 'Puff & Chops',
-    tagline: 'Puff-puff, meat pie, samosa and party small chops.',
+    tagline: 'Puff-puff, meat pie and party small chops.',
     cuisine: 'snacks',
     area: 'Gwarinpa',
     rating: 4.6,
@@ -91,7 +94,7 @@ export const restaurants = [
     priceLevel: 1,
     isOpen: true,
     promo: 'Free puff-puff over ₦8,000',
-    banner: 'snack',
+    cover: cover('puff-and-chops'),
   },
   {
     id: 'jollof-republic',
@@ -106,12 +109,12 @@ export const restaurants = [
     deliveryFee: 800,
     priceLevel: 2,
     isOpen: false,
-    banner: 'rice',
+    cover: cover('jollof-republic'),
   },
   {
     id: 'bole-junction',
     name: 'Bole Junction',
-    tagline: 'Roasted plantain, yam and fish with pepper sauce.',
+    tagline: 'Roasted plantain and grilled fish with pepper sauce.',
     cuisine: 'grill',
     area: 'Utako',
     rating: 4.6,
@@ -121,12 +124,12 @@ export const restaurants = [
     deliveryFee: 400,
     priceLevel: 1,
     isOpen: true,
-    banner: 'plantain',
+    cover: cover('bole-junction'),
   },
   {
     id: 'zobo-and-co',
     name: 'Zobo & Co.',
-    tagline: 'Cold zobo, kunu, tiger nut milk and fresh juice.',
+    tagline: 'Cold zobo, chapman and hot hibiscus tea.',
     cuisine: 'drinks',
     area: 'Wuse',
     rating: 4.7,
@@ -136,6 +139,6 @@ export const restaurants = [
     deliveryFee: 300,
     priceLevel: 1,
     isOpen: true,
-    banner: 'drink',
+    cover: cover('zobo-and-co'),
   },
 ]
